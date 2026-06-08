@@ -1,0 +1,42 @@
+.glow-pill {
+  position: relative;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.04em;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  border: 1px solid rgba(94, 234, 212, 0.18);
+  background: rgba(10, 10, 12, 0.6);
+  color: var(--teal);
+  overflow: hidden;
+  cursor: default;
+  transition: transform 0.3s var(--ease-out), border-color 0.3s, color 0.3s;
+}
+
+.glow-pill::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    80px circle at var(--x, 50%) var(--y, 50%),
+    rgba(94, 234, 212, 0.22),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.glow-pill:hover {
+  transform: translateY(-3px) scale(1.04);
+  border-color: rgba(94, 234, 212, 0.45);
+  color: #a7f3ec;
+}
+
+.glow-pill:hover::before {
+  opacity: 1;
+}
+
+.glow-pill__label {
+  position: relative;
+  z-index: 1;
+}

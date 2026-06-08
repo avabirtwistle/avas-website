@@ -1,0 +1,60 @@
+.scroll-ambient {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scroll-ambient__grid {
+  position: absolute;
+  inset: -30% -10%;
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
+  background-size: 88px 88px;
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 35%, black 5%, transparent 78%);
+  opacity: 0.55;
+  will-change: transform;
+}
+
+.scroll-ambient__glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(72px);
+  will-change: transform;
+  animation: ambientFloat 28s ease-in-out infinite alternate;
+}
+
+.scroll-ambient__glow--teal {
+  top: 8%;
+  left: -18%;
+  width: 52vmax;
+  height: 52vmax;
+  background: radial-gradient(circle, rgba(61, 155, 143, 0.1) 0%, transparent 68%);
+  animation-delay: -6s;
+}
+
+.scroll-ambient__glow--copper {
+  right: -14%;
+  bottom: 2%;
+  width: 44vmax;
+  height: 44vmax;
+  background: radial-gradient(circle, rgba(200, 121, 65, 0.09) 0%, transparent 68%);
+  animation-delay: -14s;
+}
+
+@keyframes ambientFloat {
+  from {
+    transform: translate(0, 0) scale(1);
+  }
+  to {
+    transform: translate(2.5%, 1.5%) scale(1.04);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-ambient__glow {
+    animation: none;
+  }
+}

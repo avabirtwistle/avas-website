@@ -1,0 +1,47 @@
+.loader {
+  --progress: 0%;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  overflow: hidden;
+  overscroll-behavior: none;
+  touch-action: none;
+  transition: opacity 0.65s cubic-bezier(0.22, 1, 0.36, 1),
+    visibility 0.65s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.loader--exiting {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.loader__inner {
+  width: min(7rem, 40vw);
+}
+
+.loader__track {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.1);
+  overflow: hidden;
+}
+
+.loader__fill {
+  width: var(--progress);
+  height: 100%;
+  background: var(--teal);
+  transition: width 0.12s linear;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .loader {
+    transition-duration: 0.2s;
+  }
+
+  .loader__fill {
+    transition: none;
+  }
+}

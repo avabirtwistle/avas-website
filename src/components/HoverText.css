@@ -1,0 +1,39 @@
+.hover-text {
+  display: inline;
+  cursor: default;
+}
+
+.hover-text__char {
+  display: inline-block;
+  transition:
+    transform 0.35s var(--ease-out),
+    color 0.35s var(--ease-out),
+    text-shadow 0.35s var(--ease-out);
+  transition-delay: calc(var(--char-index) * 0.018s);
+}
+
+.hover-text:hover .hover-text__char {
+  transform: translateY(-0.12em) scale(1.04);
+  color: var(--teal);
+  text-shadow: 0 0 18px rgba(94, 234, 212, 0.35);
+}
+
+.hover-text:hover .hover-text__char:nth-child(odd) {
+  color: var(--accent);
+  text-shadow: 0 0 16px rgba(200, 121, 65, 0.35);
+}
+
+.hover-text--title:hover .hover-text__char {
+  transform: translateY(-0.08em);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hover-text__char {
+    transition: color 0.2s;
+  }
+
+  .hover-text:hover .hover-text__char {
+    transform: none;
+    text-shadow: none;
+  }
+}
